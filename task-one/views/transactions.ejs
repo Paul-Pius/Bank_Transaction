@@ -1,0 +1,85 @@
+<html lang="en">
+  <%- include("./partial/head.ejs") %>
+
+  <body class="my-body-container">
+    <%- include("./partial/navbar.ejs") %>
+    <h1 class="yuse">Credit</h1>
+    <div class="blogs prodiv">
+      <% if (orders.length > 0) { %> <% orders.forEach(order => { %>
+      <div class="mx-2 my-3 img-para">
+        <h6><b>Reference:</b> <%= order.reference %></h6>
+        <h6><b>From:</b> <%= order.senderAccount_nr %></h6>
+        <h6><b>Amount:</b> <%= order.amount %></h6>
+        <h6><b>Date:</b> <%= order.createdAt %></h6>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p class="alert alert-secondary mb-3 ml-4">
+        You have no previous transaction
+      </p>
+      <% } %>
+    </div>
+    <% if (orders.length > 0) { %>
+    <div class="container-fluid">
+      <br />
+      <button class="btn btn-primary mx-2 my-3" id="debit-btn-next">
+        Next
+      </button>
+      <br />
+      <button class="btn btn-primary mx-2 my-3" id="debit-btn-previous">
+        Previous
+      </button>
+    </div>
+    <% } %>
+
+    <h1 class="yuse">Debit</h1>
+    <div class="blogs prodiv">
+      <% if (debitorders.length > 0) { %> <% debitorders.forEach(order => { %>
+      <div class="m1-2 mb-1 img-para">
+        <h6><b>Reference:</b> <%= order.reference %></h6>
+        <h6><b>To:</b> <%= order.receiverAccount_nr %></h6>
+        <h6><b>Amount:</b> <%= order.amount %></h6>
+        <h6><b>Date:</b> <%= order.createdAt %></h6>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p class="alert alert-secondary mb-3 ml-4">
+        You have no previous transaction
+      </p>
+      <% } %>
+    </div>
+    <% if (debitorders.length > 0) { %>
+    <div class="container-fluid mb-5">
+      <br />
+      <button class="btn btn-primary mx-2 my-3" id="debit-btn-next">
+        Next
+      </button>
+      <br />
+      <button class="btn btn-primary mx-2 my-3" id="debit-btn-previous">
+        Previous
+      </button>
+    </div>
+    <% } %> 
+    <%- include("./partial/footer.ejs") %>
+    <script>
+      const debitBtnNext = document.getElementById("debit-btn-next");
+      const debitBtnPrevious = document.getElementById("debit-btn-previous");
+      const value = window.location.pathname.split("/")[3]
+      let pageNext = value;
+      let pagePrevious = 1;
+      let limit = 5;
+      debitBtnNext.addEventListener("click", (e) => {
+        e.preventDefault();
+        pageNext++;
+        window.location.pathname = `/users/mytransactions/${pageNext}/5`;
+      });
+
+      debitBtnPrevious.addEventListener("click", (e) => {
+        e.preventDefault();
+        pageNext--;
+        if (pagePrevious < 1) pagePrevious = 1;
+        window.location.pathname = `/users/mytransactions/${pagePrevious}/5`;
+      });
+    </script>
+  </body>
+</html>

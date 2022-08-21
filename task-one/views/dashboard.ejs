@@ -1,0 +1,45 @@
+<html lang="en">
+  <%- include("./partial/head.ejs") %>
+  <body class="my-body-container">
+    <%- include("./partial/navbar.ejs") %>
+    <div>
+      <h2>My Dashboard</h2>
+    </div>
+    <div class="blogs prodiv">
+      <% if (userDetails.length > 0) { %> <% userDetails.forEach(info => {
+      %>
+      <div class="m1-2 mb-1 img-para">
+        <br/>
+        <h6><b>Name: </b><%= info.firstname %> <%= info.lastname %></h6>
+        <br/>
+        <h6><b>Email: </b> <%= info.email %></h6>
+        <br/>
+        <h6><b>Phone: </b> <%= info.phone %></h6>
+        <br/>
+        <h6><b>Birth Date: </b> <%= info.dob %></h6>
+        <br/>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p class="alert alert-secondary mb-3 ml-4">Tampered with!!!</p>
+      <% } %>
+    </div>
+
+    <div class="blogs prodiv">
+      <% if (accountDetails.length > 0) { %> <% accountDetails.forEach(info => {
+      %>
+      <div class="m1-2 mb-1 img-para">
+        <br/>
+        <h6><b>Account No: </b><%= info.account_nr %></h6>
+        <br/>
+        <h6><b>Balance: </b> <%= info.balance %></h6>
+      </div>
+
+      <% }) %> <% } else { %>
+      <p class="alert alert-secondary mb-3 ml-4">Tampered with!!!</p>
+      <% } %>
+    </div>
+
+    <%- include("./partial/footer.ejs") %>
+  </body>
+</html>

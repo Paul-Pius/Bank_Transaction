@@ -1,0 +1,49 @@
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div class="top">
+      <div class="logo">
+          <h2><a href="/home"></a>DECO- <span class="danger"> BANK </span></a></h2>
+      </div>
+  </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <% if (!token) { %>
+          <li class="nav-item">
+            <span class="material-icons-sharp">login</span>
+            <a class="nav-link" href="/register">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons-sharp">login</span>
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        <% } else if (token) { %>
+            <li class="nav-item">
+              <span class="material-icons-sharp">grid_view</span>
+              <a class="nav-link" href="/home">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <span class="material-icons-sharp">analytics</span>
+              <a class="nav-link" href="/users/make/transfer">Transfer</a>
+            </li>
+            <li class="nav-item">
+              <span class="material-icons-sharp">check</span>
+              <a class="nav-link" href="/users/mytransactions/1/5">History</a>
+            </li>
+          <li class="nav-item">
+            <span class="material-icons-sharp">person_outline</span>
+            <a class="nav-link">Welcome <%= user %></a>
+          </li>
+          <li class="nav-item">
+            <span class="material-icons-sharp">logout</span>
+            <a class="nav-link" href="/users/logout">logout</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

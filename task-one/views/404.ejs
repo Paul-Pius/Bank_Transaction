@@ -1,0 +1,14 @@
+<html lang="en">
+  <%- include("./partial/head.ejs") %>
+<body class="my-body-container">
+  <%- include("./partial/navbar.ejs") %>
+    <div class="containerss text-center">
+      <p class="successm"><%= message %></p>
+      <br/>
+      <% if (token) {%>
+      <a href="/home" class="btn btn-primary">Go to Dashboard</a>
+      <% } %>
+    </div>
+  <%- include("./partial/footer.ejs") %>
+</body>
+</html>

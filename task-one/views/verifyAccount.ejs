@@ -1,0 +1,47 @@
+<html lang="en">
+  <%- include("./partial/head.ejs") %>
+
+  <body class="my-body-container">
+    <%- include("./partial/navbar.ejs") %>
+
+    <h2 class="purch text-center">Verification</h2>
+
+    <div class="containerss">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 paynow">
+          <form
+            id="paymentForm"
+            action="/users/make-transfer/verify"
+            method="POST"
+          >
+            <div class="form-group">
+              <div class="form-group">
+                <label for="amount">From: <%= account_no %></label>
+                <p id="reference"></p>
+                <input
+                  type="hidden"
+                  id="accountnumber"
+                  name="senderAccount"
+                  value="<%= account_no %>"
+                  required
+                />
+              </div>
+              <label for="email">To:</label>
+              <input
+                type="text"
+                placeholder="Account number"
+                name="receiverAccount"
+                required
+              />
+            </div>
+            <div class="form-submit">
+              <button type="submit">Verify Account</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include("./partial/footer.ejs") %>
+  </body>
+</html>
